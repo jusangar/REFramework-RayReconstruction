@@ -14,6 +14,9 @@ class REManagedObject;
 class REComponent;
 
 class Graphics : public Mod {
+    // REFramework-RayReconstruction: RayReconstruction reads the ray tracing settings it checks.
+    friend class RayReconstruction;
+
 public:
     static std::shared_ptr<Graphics>& get();
 

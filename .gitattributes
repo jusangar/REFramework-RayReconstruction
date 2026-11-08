@@ -1,0 +1,3 @@
+# cmd.exe does not always find the labels of a .bat with LF line endings. This one is stored with CRLF and
+# never converted, so that a checkout, a raw download and the zip of the repo all give it as it runs.
+/install_rr_snippet.bat -text

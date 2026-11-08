@@ -306,3 +306,82 @@ link-libraries = [
 [target.weapon_stay_big_plugin]
 type = "plugin"
 sources = ["examples/weapon_stay_big_plugin/weapon_stay_big.cpp"]
+
+# ── REFramework-RayReconstruction: the NGX bridge of Ray Reconstruction ──
+# A DLL apart from dinput8.dll, which loads it with LoadLibrary from reframework/rr/ and links nothing of
+# it, since the NGX SDK's license keeps its headers and libraries out of the MIT-licensed dinput8.dll. It
+# builds where dinput8.dll expects it, never in reframework/plugins.
+[target.rr_bridge]
+condition = "build-framework"
+type = "shared"
+sources = ["rr-bridge/src/Entry.cpp"]
+headers = ["rr-bridge/include/rr_bridge.h", "rr-bridge/src/Adapter.hpp"]
+include-directories = ["rr-bridge/include"]
+compile-features = ["cxx_std_20"]
+private-compile-definitions = ["RR_BRIDGE_BUILD"]
+cmake-before = """
+set(RR_DLSS_SDK_DIR "" CACHE PATH "Local clone of NVIDIA/DLSS at v310.9.16 for the NGX bridge; empty builds the bridge without the SDK")
+option(RR_COPY_DLSSD_SNIPPET "With the NGX SDK, copy nvngx_dlssd.dll from RR_DLSS_SDK_DIR next to the NGX bridge" ON)
+option(RR_BRIDGE_TEST_WRONG_ABI "Build the NGX bridge reporting another ABI version, to check that RR says so" OFF)
+option(RR_TEST_WRONG_TAA_VS "Build dinput8.dll with an altered TAA vertex shader digest in the game's profile, to check that RR says so" OFF)
+"""
+cmake-after = """
+# The adapter with the NGX SDK only if the clone has every file it needs, so that a wrong clone gives
+# the adapter without the SDK and not a confusing link error. A sparse checkout of the clone has to
+# include lib/Windows_x86_64/x64 and lib/Windows_x86_64/rel.
+set(RR_BRIDGE_WITH_SDK OFF)
+if(RR_DLSS_SDK_DIR)
+    set(RR_DLSS_SDK_MISSING "")
+    foreach(file include/nvsdk_ngx.h include/nvsdk_ngx_defs.h include/nvsdk_ngx_params.h include/nvsdk_ngx_helpers.h include/nvsdk_ngx_helpers_d3d.h include/nvsdk_ngx_helpers_dlssd.h include/nvsdk_ngx_helpers_dlssd_d3d.h include/nvsdk_ngx_defs_dlssd.h include/nvsdk_ngx_params_dlssd.h lib/Windows_x86_64/x64/nvsdk_ngx_s.lib lib/Windows_x86_64/x64/nvsdk_ngx_s_dbg.lib LICENSE.txt)
+        if(NOT EXISTS "${RR_DLSS_SDK_DIR}/${file}")
+            list(APPEND RR_DLSS_SDK_MISSING "${file}")
+        endif()
+    endforeach()
+    if(RR_DLSS_SDK_MISSING)
+        list(JOIN RR_DLSS_SDK_MISSING ", " RR_DLSS_SDK_MISSING)
+        message(WARNING "RR_DLSS_SDK_DIR (${RR_DLSS_SDK_DIR}) lacks ${RR_DLSS_SDK_MISSING}: building the NGX bridge without the SDK")
+    else()
+        set(RR_BRIDGE_WITH_SDK ON)
+    endif()
+endif()
+if(RR_BRIDGE_WITH_SDK)
+    message(STATUS "NGX bridge: with the NGX SDK of ${RR_DLSS_SDK_DIR}")
+    target_sources(rr_bridge PRIVATE "rr-bridge/src/NgxAdapter.cpp")
+    target_include_directories(rr_bridge PRIVATE "${RR_DLSS_SDK_DIR}/include")
+    # The static CRT, as the project builds: /MTd with _ITERATOR_DEBUG_LEVEL 2 in Debug, /MT otherwise.
+    target_link_libraries(rr_bridge PRIVATE "${RR_DLSS_SDK_DIR}/lib/Windows_x86_64/x64/$<IF:$<CONFIG:Debug>,nvsdk_ngx_s_dbg.lib,nvsdk_ngx_s.lib>")
+    # The notice for the parts of NVIDIA, and NVIDIA's license from the clone, next to the bridge; never in the repo.
+    add_custom_command(TARGET rr_bridge POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/rr-bridge/NOTICE" "$<TARGET_FILE_DIR:rr_bridge>/rr_bridge_NOTICE.txt"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${RR_DLSS_SDK_DIR}/LICENSE.txt" "$<TARGET_FILE_DIR:rr_bridge>/NVIDIA_RTX_SDKs_LICENSE.txt")
+    set(RR_DLSSD_SNIPPET "${RR_DLSS_SDK_DIR}/lib/Windows_x86_64/rel/nvngx_dlssd.dll")
+    if(RR_COPY_DLSSD_SNIPPET AND EXISTS "${RR_DLSSD_SNIPPET}")
+        add_custom_command(TARGET rr_bridge POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different "${RR_DLSSD_SNIPPET}" "$<TARGET_FILE_DIR:rr_bridge>/nvngx_dlssd.dll")
+    elseif(RR_COPY_DLSSD_SNIPPET)
+        message(STATUS "NGX bridge: ${RR_DLSSD_SNIPPET} is not in the clone; the snippet is not copied")
+    endif()
+else()
+    target_sources(rr_bridge PRIVATE "rr-bridge/src/NoSdkAdapter.cpp")
+endif()
+if(RR_BRIDGE_TEST_WRONG_ABI)
+    target_compile_definitions(rr_bridge PRIVATE RR_BRIDGE_TEST_WRONG_ABI)
+endif()
+if(RR_TEST_WRONG_TAA_VS)
+    target_compile_definitions(REFramework PRIVATE RR_TEST_WRONG_TAA_VS)
+endif()
+# The RayReconstruction Mod includes the bridge's ABI header, and nothing else of it. REFramework is
+# defined above, under the same condition.
+target_include_directories(REFramework PRIVATE "rr-bridge/include")
+# The Mod's shaders, embedded in dinput8.dll for D3DCompile at run time.
+include("${CMAKE_CURRENT_SOURCE_DIR}/src/mods/rr/EmbedShaders.cmake")
+target_include_directories(REFramework PRIVATE "${RR_SHADERS_DIR}")
+"""
+
+[target.rr_bridge.properties]
+RUNTIME_OUTPUT_DIRECTORY_RELEASE = "${CMAKE_BINARY_DIR}/bin/REFramework/reframework/rr"
+RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO = "${CMAKE_BINARY_DIR}/bin/REFramework/reframework/rr"
+LIBRARY_OUTPUT_DIRECTORY_RELEASE = "${CMAKE_BINARY_DIR}/lib/rr_bridge"
+LIBRARY_OUTPUT_DIRECTORY_RELWITHDEBINFO = "${CMAKE_BINARY_DIR}/lib/rr_bridge"
+ARCHIVE_OUTPUT_DIRECTORY_RELEASE = "${CMAKE_BINARY_DIR}/lib/rr_bridge"
+ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO = "${CMAKE_BINARY_DIR}/lib/rr_bridge"

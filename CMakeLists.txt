@@ -616,6 +616,110 @@ if(REF_BUILD_FRAMEWORK AND CMAKE_SIZEOF_VOID_P EQUAL 8) # build-framework
 		"shared/sdk/regenny/dd2/via/typeinfo/TypeInfo.hpp"
 		"shared/sdk/regenny/dd2/via/vec3.hpp"
 		"shared/sdk/regenny/dd2/via/vec4.hpp"
+		"shared/sdk/regenny/dd2_tdb83/BullShit.hpp"
+		"shared/sdk/regenny/dd2_tdb83/DeserializeSequence.hpp"
+		"shared/sdk/regenny/dd2_tdb83/ManagedVtable.hpp"
+		"shared/sdk/regenny/dd2_tdb83/RTInternal.hpp"
+		"shared/sdk/regenny/dd2_tdb83/RayTrace.hpp"
+		"shared/sdk/regenny/dd2_tdb83/RenderEntity.hpp"
+		"shared/sdk/regenny/dd2_tdb83/System/String.hpp"
+		"shared/sdk/regenny/dd2_tdb83/TypeDefinition.hpp"
+		"shared/sdk/regenny/dd2_tdb83/game/IkArmFit.hpp"
+		"shared/sdk/regenny/dd2_tdb83/game/InputSystem.hpp"
+		"shared/sdk/regenny/dd2_tdb83/tdb73/AttributeDef.hpp"
+		"shared/sdk/regenny/dd2_tdb83/tdb73/Field.hpp"
+		"shared/sdk/regenny/dd2_tdb83/tdb73/FieldImpl.hpp"
+		"shared/sdk/regenny/dd2_tdb83/tdb73/MethodDefinition.hpp"
+		"shared/sdk/regenny/dd2_tdb83/tdb73/MethodImpl.hpp"
+		"shared/sdk/regenny/dd2_tdb83/tdb73/ParamList.hpp"
+		"shared/sdk/regenny/dd2_tdb83/tdb73/ParameterDef.hpp"
+		"shared/sdk/regenny/dd2_tdb83/tdb73/Property.hpp"
+		"shared/sdk/regenny/dd2_tdb83/tdb73/PropertyImpl.hpp"
+		"shared/sdk/regenny/dd2_tdb83/tdb73/TDB.hpp"
+		"shared/sdk/regenny/dd2_tdb83/tdb73/TypeDefinition.hpp"
+		"shared/sdk/regenny/dd2_tdb83/tdb73/TypeImpl.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/Application.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/BasisPlane.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/CameraType.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/Capsule.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/Color.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/Component.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/DeviceOrientation.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/DisplayType.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/Folder.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/GameObject.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/IntArray.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/JobSet.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/Joint.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/JointArray.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/JointData.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/JointDesc.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/JointMap.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/ManagedObjectArray.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/MobileBarState.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/Motion.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/Object.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/Point.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/Range.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/RenderType.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/Scene.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/SceneArray.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/SceneManager.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/SceneView.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/Size.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/Sphere.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/Transform.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/UInt8Array.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/UIntArray.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/UIntArrayArray.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/Window.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/array.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/behaviortree/BehaviorTree.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/behaviortree/BehaviorTreeCoreHandleArray.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/behaviortree/BehaviorTreeData.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/behaviortree/Condition.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/behaviortree/Core.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/behaviortree/CoreHandle.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/behaviortree/NodeArray.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/behaviortree/NodeArray2.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/behaviortree/NodeStatus.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/behaviortree/Selector.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/behaviortree/SelectorFSM.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/behaviortree/TreeNode.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/behaviortree/TreeNodeData.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/behaviortree/TreeObject.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/behaviortree/TreeObjectData.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/clr/ManagedObject.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/fixed_array_jobs.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/gui/Control.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/gui/GUI.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/gui/GUIManager.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/gui/GUIMeshRenderer.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/gui/PlayObject.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/gui/PrimitiveContext.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/gui/TransformObject.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/gui/View.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/gui/Window.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/mat4.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/motion/AxisDirection.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/motion/Chain.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/motion/ChainCollisionArray.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/motion/ChainCollisionData.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/motion/ChainCollisionTop.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/motion/ChainCollisions.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/motion/Data.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/motion/InterpolationMode.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/motion/MotionFsm2.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/motion/MotionFsm2Internal.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/motion/MotionFsm2Layer.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/motion/MotionFsm2RawData.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/motion/MotionFsm2Resource.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/motion/SecondaryAnimation.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/motion/TransitionData.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/motion/TransitionMap.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/typeinfo/TypeInfo.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/vec3.hpp"
+		"shared/sdk/regenny/dd2_tdb83/via/vec4.hpp"
 		"shared/sdk/regenny/mhrise/via/Capsule.hpp"
 		"shared/sdk/regenny/mhrise/via/OBB.hpp"
 		"shared/sdk/regenny/mhrise/via/Sphere.hpp"
@@ -1457,6 +1561,8 @@ if(REF_BUILD_FRAMEWORK AND CMAKE_SIZEOF_VOID_P EQUAL 8) # build-framework
 		"src/mods/Camera.hpp"
 		"src/mods/DeveloperTools.cpp"
 		"src/mods/DeveloperTools.hpp"
+		"src/mods/EmissionCorrection.cpp"
+		"src/mods/EmissionCorrection.hpp"
 		"src/mods/FaultyFileDetector.cpp"
 		"src/mods/FaultyFileDetector.hpp"
 		"src/mods/FirstPerson.cpp"
@@ -1481,6 +1587,8 @@ if(REF_BUILD_FRAMEWORK AND CMAKE_SIZEOF_VOID_P EQUAL 8) # build-framework
 		"src/mods/PluginLoader.hpp"
 		"src/mods/REFrameworkConfig.cpp"
 		"src/mods/REFrameworkConfig.hpp"
+		"src/mods/RayReconstruction.cpp"
+		"src/mods/RayReconstruction.hpp"
 		"src/mods/Scene.cpp"
 		"src/mods/Scene.hpp"
 		"src/mods/ScriptRunner.cpp"
@@ -1495,6 +1603,59 @@ if(REF_BUILD_FRAMEWORK AND CMAKE_SIZEOF_VOID_P EQUAL 8) # build-framework
 		"src/mods/bindings/Json.hpp"
 		"src/mods/bindings/Sdk.cpp"
 		"src/mods/bindings/Sdk.hpp"
+		"src/mods/emission/core/BindDecision.cpp"
+		"src/mods/emission/core/BindDecision.hpp"
+		"src/mods/emission/core/ContainerSum.cpp"
+		"src/mods/emission/core/ContainerSum.hpp"
+		"src/mods/emission/core/ShaderEdit.cpp"
+		"src/mods/emission/core/ShaderEdit.hpp"
+		"src/mods/emission/core/Table.cpp"
+		"src/mods/emission/core/Table.hpp"
+		"src/mods/rr/D3D12Hooks.cpp"
+		"src/mods/rr/D3D12Hooks.hpp"
+		"src/mods/rr/GuidePass.cpp"
+		"src/mods/rr/GuidePass.hpp"
+		"src/mods/rr/ListHooks.cpp"
+		"src/mods/rr/ListHooks.hpp"
+		"src/mods/rr/ListState.hpp"
+		"src/mods/rr/PsoRegistry.cpp"
+		"src/mods/rr/PsoRegistry.hpp"
+		"src/mods/rr/PsoSubstitution.cpp"
+		"src/mods/rr/PsoSubstitution.hpp"
+		"src/mods/rr/core/AmbientBrdf.cpp"
+		"src/mods/rr/core/AmbientBrdf.hpp"
+		"src/mods/rr/core/BridgeLoader.cpp"
+		"src/mods/rr/core/BridgeLoader.hpp"
+		"src/mods/rr/core/BridgeSession.cpp"
+		"src/mods/rr/core/BridgeSession.hpp"
+		"src/mods/rr/core/CutDetector.cpp"
+		"src/mods/rr/core/CutDetector.hpp"
+		"src/mods/rr/core/FramePolicy.cpp"
+		"src/mods/rr/core/FramePolicy.hpp"
+		"src/mods/rr/core/Geometry.cpp"
+		"src/mods/rr/core/Geometry.hpp"
+		"src/mods/rr/core/Guides.hpp"
+		"src/mods/rr/core/HlslCompat.hpp"
+		"src/mods/rr/core/Identification.cpp"
+		"src/mods/rr/core/Identification.hpp"
+		"src/mods/rr/core/Jitter.cpp"
+		"src/mods/rr/core/Jitter.hpp"
+		"src/mods/rr/core/Measurements.cpp"
+		"src/mods/rr/core/Measurements.hpp"
+		"src/mods/rr/core/Profile.cpp"
+		"src/mods/rr/core/Profile.hpp"
+		"src/mods/rr/core/Reference.cpp"
+		"src/mods/rr/core/Reference.hpp"
+		"src/mods/rr/core/ResourceStates.cpp"
+		"src/mods/rr/core/ResourceStates.hpp"
+		"src/mods/rr/core/RootLayout.cpp"
+		"src/mods/rr/core/RootLayout.hpp"
+		"src/mods/rr/core/Settings.cpp"
+		"src/mods/rr/core/Settings.hpp"
+		"src/mods/rr/core/ShaderDigest.cpp"
+		"src/mods/rr/core/ShaderDigest.hpp"
+		"src/mods/rr/core/ViewTable.cpp"
+		"src/mods/rr/core/ViewTable.hpp"
 		"src/mods/spritefonts/Roboto.spritefont.h"
 		"src/mods/tools/ChainViewer.cpp"
 		"src/mods/tools/ChainViewer.hpp"
@@ -1715,5 +1876,104 @@ if(REF_BUILD_FRAMEWORK AND CMAKE_SIZEOF_VOID_P EQUAL 8) # build-framework
 		ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO
 			"${CMAKE_BINARY_DIR}/lib/${CMKR_TARGET}"
 	)
+
+endif()
+# Target: rr_bridge
+if(REF_BUILD_FRAMEWORK AND CMAKE_SIZEOF_VOID_P EQUAL 8) # build-framework
+	set(CMKR_TARGET rr_bridge)
+	set(RR_DLSS_SDK_DIR "" CACHE PATH "Local clone of NVIDIA/DLSS at v310.9.16 for the NGX bridge; empty builds the bridge without the SDK")
+	option(RR_COPY_DLSSD_SNIPPET "With the NGX SDK, copy nvngx_dlssd.dll from RR_DLSS_SDK_DIR next to the NGX bridge" ON)
+	option(RR_BRIDGE_TEST_WRONG_ABI "Build the NGX bridge reporting another ABI version, to check that RR says so" OFF)
+	option(RR_TEST_WRONG_TAA_VS "Build dinput8.dll with an altered TAA vertex shader digest in the game's profile, to check that RR says so" OFF)
+
+	set(rr_bridge_SOURCES
+		cmake.toml
+		"rr-bridge/include/rr_bridge.h"
+		"rr-bridge/src/Adapter.hpp"
+		"rr-bridge/src/Entry.cpp"
+	)
+
+	add_library(rr_bridge SHARED)
+
+	target_sources(rr_bridge PRIVATE ${rr_bridge_SOURCES})
+	source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${rr_bridge_SOURCES})
+
+	target_compile_definitions(rr_bridge PRIVATE
+		RR_BRIDGE_BUILD
+	)
+
+	target_compile_features(rr_bridge PUBLIC
+		cxx_std_20
+	)
+
+	target_include_directories(rr_bridge PUBLIC
+		"rr-bridge/include"
+	)
+
+	set_target_properties(rr_bridge PROPERTIES
+		RUNTIME_OUTPUT_DIRECTORY_RELEASE
+			"${CMAKE_BINARY_DIR}/bin/REFramework/reframework/rr"
+		RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO
+			"${CMAKE_BINARY_DIR}/bin/REFramework/reframework/rr"
+		LIBRARY_OUTPUT_DIRECTORY_RELEASE
+			"${CMAKE_BINARY_DIR}/lib/rr_bridge"
+		LIBRARY_OUTPUT_DIRECTORY_RELWITHDEBINFO
+			"${CMAKE_BINARY_DIR}/lib/rr_bridge"
+		ARCHIVE_OUTPUT_DIRECTORY_RELEASE
+			"${CMAKE_BINARY_DIR}/lib/rr_bridge"
+		ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO
+			"${CMAKE_BINARY_DIR}/lib/rr_bridge"
+	)
+
+	# The adapter with the NGX SDK only if the clone has every file it needs, so that a wrong clone gives
+	# the adapter without the SDK and not a confusing link error. A sparse checkout of the clone has to
+	# include lib/Windows_x86_64/x64 and lib/Windows_x86_64/rel.
+	set(RR_BRIDGE_WITH_SDK OFF)
+	if(RR_DLSS_SDK_DIR)
+	    set(RR_DLSS_SDK_MISSING "")
+	    foreach(file include/nvsdk_ngx.h include/nvsdk_ngx_defs.h include/nvsdk_ngx_params.h include/nvsdk_ngx_helpers.h include/nvsdk_ngx_helpers_d3d.h include/nvsdk_ngx_helpers_dlssd.h include/nvsdk_ngx_helpers_dlssd_d3d.h include/nvsdk_ngx_defs_dlssd.h include/nvsdk_ngx_params_dlssd.h lib/Windows_x86_64/x64/nvsdk_ngx_s.lib lib/Windows_x86_64/x64/nvsdk_ngx_s_dbg.lib LICENSE.txt)
+	        if(NOT EXISTS "${RR_DLSS_SDK_DIR}/${file}")
+	            list(APPEND RR_DLSS_SDK_MISSING "${file}")
+	        endif()
+	    endforeach()
+	    if(RR_DLSS_SDK_MISSING)
+	        list(JOIN RR_DLSS_SDK_MISSING ", " RR_DLSS_SDK_MISSING)
+	        message(WARNING "RR_DLSS_SDK_DIR (${RR_DLSS_SDK_DIR}) lacks ${RR_DLSS_SDK_MISSING}: building the NGX bridge without the SDK")
+	    else()
+	        set(RR_BRIDGE_WITH_SDK ON)
+	    endif()
+	endif()
+	if(RR_BRIDGE_WITH_SDK)
+	    message(STATUS "NGX bridge: with the NGX SDK of ${RR_DLSS_SDK_DIR}")
+	    target_sources(rr_bridge PRIVATE "rr-bridge/src/NgxAdapter.cpp")
+	    target_include_directories(rr_bridge PRIVATE "${RR_DLSS_SDK_DIR}/include")
+	    # The static CRT, as the project builds: /MTd with _ITERATOR_DEBUG_LEVEL 2 in Debug, /MT otherwise.
+	    target_link_libraries(rr_bridge PRIVATE "${RR_DLSS_SDK_DIR}/lib/Windows_x86_64/x64/$<IF:$<CONFIG:Debug>,nvsdk_ngx_s_dbg.lib,nvsdk_ngx_s.lib>")
+	    # The notice for the parts of NVIDIA, and NVIDIA's license from the clone, next to the bridge; never in the repo.
+	    add_custom_command(TARGET rr_bridge POST_BUILD
+	        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/rr-bridge/NOTICE" "$<TARGET_FILE_DIR:rr_bridge>/rr_bridge_NOTICE.txt"
+	        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${RR_DLSS_SDK_DIR}/LICENSE.txt" "$<TARGET_FILE_DIR:rr_bridge>/NVIDIA_RTX_SDKs_LICENSE.txt")
+	    set(RR_DLSSD_SNIPPET "${RR_DLSS_SDK_DIR}/lib/Windows_x86_64/rel/nvngx_dlssd.dll")
+	    if(RR_COPY_DLSSD_SNIPPET AND EXISTS "${RR_DLSSD_SNIPPET}")
+	        add_custom_command(TARGET rr_bridge POST_BUILD
+	            COMMAND ${CMAKE_COMMAND} -E copy_if_different "${RR_DLSSD_SNIPPET}" "$<TARGET_FILE_DIR:rr_bridge>/nvngx_dlssd.dll")
+	    elseif(RR_COPY_DLSSD_SNIPPET)
+	        message(STATUS "NGX bridge: ${RR_DLSSD_SNIPPET} is not in the clone; the snippet is not copied")
+	    endif()
+	else()
+	    target_sources(rr_bridge PRIVATE "rr-bridge/src/NoSdkAdapter.cpp")
+	endif()
+	if(RR_BRIDGE_TEST_WRONG_ABI)
+	    target_compile_definitions(rr_bridge PRIVATE RR_BRIDGE_TEST_WRONG_ABI)
+	endif()
+	if(RR_TEST_WRONG_TAA_VS)
+	    target_compile_definitions(REFramework PRIVATE RR_TEST_WRONG_TAA_VS)
+	endif()
+	# The RayReconstruction Mod includes the bridge's ABI header, and nothing else of it. REFramework is
+	# defined above, under the same condition.
+	target_include_directories(REFramework PRIVATE "rr-bridge/include")
+	# The Mod's shaders, embedded in dinput8.dll for D3DCompile at run time.
+	include("${CMAKE_CURRENT_SOURCE_DIR}/src/mods/rr/EmbedShaders.cmake")
+	target_include_directories(REFramework PRIVATE "${RR_SHADERS_DIR}")
 
 endif()

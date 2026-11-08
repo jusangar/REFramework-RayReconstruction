@@ -1,0 +1,34 @@
+rr_bridge.dll: the NGX bridge of REFramework-RayReconstruction
+==============================================================
+
+REFramework, and the source code of this bridge, are under the MIT license (LICENSE at the root of the
+repository). This notice covers what the bridge takes from NVIDIA when it is built with the NVIDIA DLSS
+SDK, that is, with the CMake variable RR_DLSS_SDK_DIR pointing to a clone of
+https://github.com/NVIDIA/DLSS at v310.9.16.
+
+Parts of NVIDIA
+---------------
+
+Built that way, rr_bridge.dll incorporates, in object code form, portions of the NVIDIA NGX SDK of the
+DLSS SDK: the static library nvsdk_ngx_s.lib (nvsdk_ngx_s_dbg.lib in a Debug build) and the inline
+helpers of its headers. Those portions are not under the MIT license. They are licensed under the
+NVIDIA RTX SDKs License, which the build copies next to this file as NVIDIA_RTX_SDKs_LICENSE.txt, from
+LICENSE.txt in the clone. None of NVIDIA's files is part of the REFramework-RayReconstruction
+repository.
+
+This software contains source code provided by NVIDIA Corporation.
+
+The snippet of DLSS Ray Reconstruction
+--------------------------------------
+
+nvngx_dlssd.dll belongs to NVIDIA Corporation and is governed by the same license. Neither the
+repository nor its releases include or distribute it. Whoever installs RR takes it from
+lib/Windows_x86_64/rel/ of NVIDIA/DLSS at v310.9.16 and places it in reframework/rr/ next to the
+bridge: by hand, with install_rr_snippet.bat, which downloads it from there and checks it, or by
+letting the build copy it from the clone (the CMake option RR_COPY_DLSSD_SNIPPET).
+
+Trademarks
+----------
+
+NVIDIA, RTX, DLSS and NGX are trademarks or registered trademarks of NVIDIA Corporation in the United
+States and other countries. REFramework-RayReconstruction is not sponsored or endorsed by NVIDIA.

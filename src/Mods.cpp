@@ -4,6 +4,7 @@
 #include "mods/BackBufferRenderer.hpp"
 #include "mods/APIProxy.hpp"
 #include "mods/Camera.hpp"
+#include "mods/EmissionCorrection.hpp"
 #include "mods/Graphics.hpp"
 #include "mods/DeveloperTools.hpp"
 #include "mods/FirstPerson.hpp"
@@ -12,6 +13,7 @@
 #include "mods/IntegrityCheckBypass.hpp"
 #include "mods/ManualFlashlight.hpp"
 #include "mods/PluginLoader.hpp"
+#include "mods/RayReconstruction.hpp"
 #include "mods/REFrameworkConfig.hpp"
 #include "mods/MethodDatabase.hpp"
 #include "mods/Scene.hpp"
@@ -57,6 +59,16 @@ Mods::Mods() {
     // All games!!!!
     m_mods.emplace_back(std::make_unique<Camera>());
     m_mods.emplace_back(Graphics::get());
+
+    // REFramework-RayReconstruction: only in the games with an RR profile.
+    if (RayReconstruction::is_supported()) {
+        m_mods.emplace_back(RayReconstruction::get());
+    }
+
+    // REFramework-RayReconstruction: only in the games with a table of the emission correction.
+    if (EmissionCorrection::is_supported()) {
+        m_mods.emplace_back(EmissionCorrection::get());
+    }
 
     {
         const auto& gi = sdk::GameIdentity::get();

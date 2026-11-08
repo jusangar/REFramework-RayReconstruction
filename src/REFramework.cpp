@@ -40,6 +40,8 @@ extern "C" {
 #include "mods/LooseFileLoader.hpp"
 #include "mods/LooseTextureLoader.hpp"
 #include "mods/PluginLoader.hpp"
+#include "mods/EmissionCorrection.hpp"
+#include "mods/RayReconstruction.hpp"
 #include "mods/VR.hpp"
 #include "sdk/REGlobals.hpp"
 #include "sdk/Application.hpp"
@@ -230,6 +232,12 @@ try {
                 spdlog::info("LdrRegisterDllNotification: Detected DLSS DLL loaded");
 
                 D3D12Hook::hook_streamline((HMODULE)NotificationData->Loaded.DllBase);
+            }
+
+            // REFramework-RayReconstruction: hook D3D12CreateDevice before the game can call it.
+            if (lower_base_dll_name == L"d3d12.dll") {
+                EmissionCorrection::on_d3d12_loaded();
+                RayReconstruction::on_d3d12_loaded((HMODULE)NotificationData->Loaded.DllBase);
             }
         }
 
@@ -466,6 +474,10 @@ REFramework::REFramework(HMODULE reframework_module)
 
             if (g_success_made_ldr_notification) {
                 spdlog::info("LdrRegisterDllNotification callback registered successfully");
+
+                // REFramework-RayReconstruction: d3d12.dll may already be mapped.
+                EmissionCorrection::on_d3d12_loaded();
+                RayReconstruction::on_d3d12_loaded(GetModuleHandleW(L"d3d12.dll"));
             } else {
                 spdlog::info("LdrRegisterDllNotification callback failed to register");
             }
